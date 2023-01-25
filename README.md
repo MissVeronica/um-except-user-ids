@@ -13,7 +13,8 @@ Additional parameter is a list of "except" user ID's either entered in the short
 4. Lockout text for User IDs is set from UM Settings
 5. If the except parameter in the shortcode is being used this User ID list will override the UM Setting of except User IDs
 6. Default UM Template ('login-to-view.php') is being used for Lock and Lockout text.
-7. Setting with one meta_key where a meta_value make the current user of the post/Page status to be excluded from viewing the content. 
+7. Setting with one meta_key where a meta_value make the current user of the post/Page status to be excluded from viewing the content.
+8. Highest parameter priority "meta_key:meta_value".
 ## Settings
 UM Settings -> Access -> Other
 1. Except Users - User ID list
