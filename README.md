@@ -7,11 +7,12 @@ https://docs.ultimatemember.com/article/177-restrict-content-on-a-page-post-to-l
 
 Additional parameter is a list of "except" user ID's either entered in the shortcode or at the UM Settings incl a Lockout text.
 ## Shortcode
-1. Setting except User IDs via UM Settings: [um_except_user_ids]  ... page/post content ...  [/um_except_user_ids]
-2. Setting except User IDs via the shortcode [um_except_user_ids except="4568,4569"]  ... page/post content ... [/um_except_user_ids]
+1. Setting with the except User IDs via UM Settings: [um_except_user_ids]  ... page/post content ...  [/um_except_user_ids]
+2. Setting with the except User IDs via the shortcode [um_except_user_ids except="4568,4569"]  ... page/post content ... [/um_except_user_ids]
 3. Additional parameters show_lock="yes", show_lock="no", lock_text=" ... text ... " for logged out users
 4. Lockout text for User IDs is set from UM Settings
 5. If the except parameter in the shortcode is being used this User ID list will override the UM Setting of except User IDs
+6. Default UM Template is being used for Lock and Lockout text.
 ## Settings
 UM Settings -> Access -> Other
 1. Except User IDs - User ID list
