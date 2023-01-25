@@ -1,4 +1,4 @@
-# UM Except User IDs
+# UM Except User IDs Shortcode
 Extension to Ultimate Member Shortcode to exclude logged in user IDs from Pages/Posts.
 
 This shortcode is based on the UM shortcode "Restrict content on a page/post to logged in users".
