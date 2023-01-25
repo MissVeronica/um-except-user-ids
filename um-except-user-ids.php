@@ -134,21 +134,21 @@ class UM_Except_Users_Access {
         $settings_structure['access']['sections']['other']['fields'][] = array(
                         'id'      => 'um_except_user_ids',
                         'type'    => 'text',
-                        'label'   => __( 'Except User IDs - User ID list', 'ultimate-member' ),
+                        'label'   => __( 'Except Users - User ID list', 'ultimate-member' ),
                         'tooltip' => __( 'User ID list comma separated.', 'ultimate-member' )
                     );
 
         $settings_structure['access']['sections']['other']['fields'][] = array(
                         'id'      => 'um_except_user_meta_key_value',
                         'type'    => 'text',
-                        'label'   => __( 'Except User IDs - meta_key:meta_value', 'ultimate-member' ),
-                        'tooltip' => __( 'meta_key:meta_value for exclusion.', 'ultimate-member' )
+                        'label'   => __( 'Except Users - meta_key:meta_value', 'ultimate-member' ),
+                        'tooltip' => __( 'meta_key:meta_value for user exclusion.', 'ultimate-member' )
                     );
 
         $settings_structure['access']['sections']['other']['fields'][] = array(
                         'id'      => 'um_except_user_ids_lock_text',
                         'type'    => 'text',
-                        'label'   => __( 'Except User IDs - Lock out text', 'ultimate-member' ),
+                        'label'   => __( 'Except Users - Lock out text', 'ultimate-member' ),
                         'tooltip' => __( 'Text to display for the users in the except list.', 'ultimate-member' )
                     );
 
