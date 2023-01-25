@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:     Ultimate Member - Except User IDs Shortcode
- * Description:     Extension to Ultimate Member Shortcode to exclude logged in user IDs from Pages/Posts.
- * Version:         1.0.0
+ * Plugin Name:     Ultimate Member - Except Users Access Shortcode
+ * Description:     Extension to Ultimate Member Shortcode to exclude logged in users from accessing Pages/Posts.
+ * Version:         2.0.0
  * Requires PHP:    7.4
  * Author:          Miss Veronica
  * License:         GPL v2 or later
@@ -17,7 +17,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 if ( ! class_exists( 'UM' ) ) return;
 
-class UM_Except_User_IDs {
+class UM_Except_Users_Access {
 
     public function __construct() {
 
@@ -58,16 +58,40 @@ class UM_Except_User_IDs {
 
         } else {
 
-            if ( empty( $args['except'] ) ) {
+            $except_ids = array();
+            $meta_exception = UM()->options()->get( 'um_except_user_meta_key_value' );
 
-                $except_ids = UM()->options()->get( 'um_except_user_ids' );
-                if ( ! empty( $except_ids )) {
-                    $except_ids = array_map( 'intval', explode( ',', $except_ids ));
+            if ( ! empty( $meta_exception )) {
+
+                $meta_exception = explode( ':', strtolower( $meta_exception ));
+                $meta_value_except = maybe_unserialize( um_user( $meta_exception[0] ));
+
+                if ( is_array( $meta_value_except )) {
+
+                    if ( in_array( $meta_exception[1], array_map( 'strtolower', $meta_value_except ))) {
+                        $except_ids[] = $current_user->ID;
+                    }
+
+                } else {
+                
+                    if ( ! empty( $meta_value_except ) && strtolower( $meta_value_except ) == $meta_exception[1] ) {
+                        $except_ids[] = $current_user->ID;
+                    }
                 }
 
             } else {
 
-                $except_ids = array_map( 'intval', explode( ',', $args['except'] ));
+                if ( empty( $args['except'] ) ) {
+
+                    $except_ids = UM()->options()->get( 'um_except_user_ids' );
+                    if ( ! empty( $except_ids )) {
+                        $except_ids = array_map( 'intval', explode( ',', $except_ids ));
+                    }
+
+                } else {
+
+                    $except_ids = array_map( 'intval', explode( ',', $args['except'] ));
+                }
             }
 
             if ( is_array( $except_ids ) && in_array( $current_user->ID, $except_ids )) {
@@ -115,6 +139,13 @@ class UM_Except_User_IDs {
                     );
 
         $settings_structure['access']['sections']['other']['fields'][] = array(
+                        'id'      => 'um_except_user_meta_key_value',
+                        'type'    => 'text',
+                        'label'   => __( 'Except User IDs - meta_key:meta_value', 'ultimate-member' ),
+                        'tooltip' => __( 'meta_key:meta_value for exclusion.', 'ultimate-member' )
+                    );
+
+        $settings_structure['access']['sections']['other']['fields'][] = array(
                         'id'      => 'um_except_user_ids_lock_text',
                         'type'    => 'text',
                         'label'   => __( 'Except User IDs - Lock out text', 'ultimate-member' ),
@@ -125,4 +156,4 @@ class UM_Except_User_IDs {
     }
 }
 
-new UM_Except_User_IDs();
+new UM_Except_Users_Access();
