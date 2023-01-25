@@ -12,7 +12,7 @@ Additional parameter is a list of "except" user ID's either entered in the short
 3. Additional parameters show_lock="yes", show_lock="no", lock_text=" ... text ... " for logged out users
 4. Lockout text for User IDs is set from UM Settings
 5. If the except parameter in the shortcode is being used this User ID list will override the UM Setting of except User IDs
-6. Default UM Template is being used for Lock and Lockout text.
+6. Default UM Template ('login-to-view.php') is being used for Lock and Lockout text.
 ## Settings
 UM Settings -> Access -> Other
 1. Except User IDs - User ID list
